@@ -1,3 +1,8 @@
+# DataWrapperAPI
+This is an investigation into using swagger tools to create a nodejs server, which wrapps the original RESTlet project from RatchetC, providing only the essential endpoints for the Leaderboard to read.
+It will also provide the scores functions which are dependent on the activities which have been defined by the mobile app, and will require a suitable function for each event to be defined within a database.
+
+
 # LiveProjectsSubProject
 This is a template, which lays out a structure for a sub-project to the main [LiveProjectsTemplateProject](https://github.com/CMDT/LiveProjectsTemplate). 
 
