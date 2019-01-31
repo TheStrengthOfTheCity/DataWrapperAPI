@@ -3,6 +3,17 @@
 var utils = require('../utils/writer.js');
 var ActivityEvents = require('../service/ActivityEventsService');
 
+module.exports.deleteActivitiesActivityid = function deleteActivitiesActivityid (req, res, next) {
+  var activityid = req.swagger.params['activityid'].value;
+  ActivityEvents.deleteActivitiesActivityid(activityid)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.deleteEventActivityMappingsEventActivityMappingid = function deleteEventActivityMappingsEventActivityMappingid (req, res, next) {
   var eventActivityMappingid = req.swagger.params['eventActivityMappingid'].value;
   ActivityEvents.deleteEventActivityMappingsEventActivityMappingid(eventActivityMappingid)
@@ -226,6 +237,17 @@ module.exports.getSubjectsSubjectid = function getSubjectsSubjectid (req, res, n
     });
 };
 
+module.exports.postActivities = function postActivities (req, res, next) {
+  var body = req.swagger.params['body'].value;
+  ActivityEvents.postActivities(body)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.postEventActivityMappings = function postEventActivityMappings (req, res, next) {
   var body = req.swagger.params['body'].value;
   ActivityEvents.postEventActivityMappings(body)
@@ -273,6 +295,18 @@ module.exports.postObservations = function postObservations (req, res, next) {
 module.exports.postSubjects = function postSubjects (req, res, next) {
   var body = req.swagger.params['body'].value;
   ActivityEvents.postSubjects(body)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+module.exports.putActivitiesActivityid = function putActivitiesActivityid (req, res, next) {
+  var activityid = req.swagger.params['activityid'].value;
+  var body = req.swagger.params['body'].value;
+  ActivityEvents.putActivitiesActivityid(activityid,body)
     .then(function (response) {
       utils.writeJson(res, response);
     })

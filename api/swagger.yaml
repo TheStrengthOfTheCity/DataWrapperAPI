@@ -7,15 +7,10 @@ info:
   contact:
     name: "msf.db.api@gmail.com"
     email: "msf.db.api@gmail.com"
-host: "localhost:8080"
+host: "activityevents.restlet.net"
 basePath: "/v1"
-tags:
-- name: "Default"
-  description: "Default section"
-- name: "ActivityEvents"
-  description: "Imported from ActivityEvents"
 schemes:
-- "http"
+- "https"
 paths:
   /activities/:
     get:
@@ -25,9 +20,6 @@ paths:
       operationId: "getActivities"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "units"
         in: "query"
@@ -102,6 +94,29 @@ paths:
       security:
       - HTTP_BASIC: []
       x-swagger-router-controller: "ActivityEvents"
+    post:
+      tags:
+      - "ActivityEvents"
+      description: "Adds a Activity"
+      operationId: "postActivities"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Activity"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/Activity"
+      security:
+      - HTTP_BASIC: []
+      x-swagger-router-controller: "ActivityEvents"
   /activities/{activityid}:
     get:
       tags:
@@ -110,9 +125,6 @@ paths:
       operationId: "getActivitiesActivityid"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "activityid"
         in: "path"
@@ -130,6 +142,53 @@ paths:
       security:
       - HTTP_BASIC: []
       x-swagger-router-controller: "ActivityEvents"
+    put:
+      tags:
+      - "ActivityEvents"
+      description: "Stores a Activity"
+      operationId: "putActivitiesActivityid"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "activityid"
+        in: "path"
+        description: "Identifier of the Activity"
+        required: true
+        type: "string"
+        x-example: "sample activityid"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Activity"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/Activity"
+      security:
+      - HTTP_BASIC: []
+      x-swagger-router-controller: "ActivityEvents"
+    delete:
+      tags:
+      - "ActivityEvents"
+      description: "Deletes a Activity"
+      operationId: "deleteActivitiesActivityid"
+      parameters:
+      - name: "activityid"
+        in: "path"
+        description: "Identifier of the Activity"
+        required: true
+        type: "string"
+        x-example: "sample activityid"
+      responses:
+        200:
+          description: "Status 200"
+      security:
+      - HTTP_BASIC: []
+      x-swagger-router-controller: "ActivityEvents"
   /eventActivityMappings/:
     get:
       tags:
@@ -138,9 +197,6 @@ paths:
       operationId: "getEventActivityMappings"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "$size"
         in: "query"
@@ -201,18 +257,12 @@ paths:
       operationId: "postEventActivityMappings"
       consumes:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - in: "body"
         name: "body"
-        required: false
+        required: true
         schema:
           $ref: "#/definitions/EventActivityMapping"
       responses:
@@ -231,9 +281,6 @@ paths:
       operationId: "getEventActivityMappingsEventActivityMappingid"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "eventActivityMappingid"
         in: "path"
@@ -258,14 +305,8 @@ paths:
       operationId: "putEventActivityMappingsEventActivityMappingid"
       consumes:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "eventActivityMappingid"
         in: "path"
@@ -275,7 +316,7 @@ paths:
         x-example: "sample eventActivityMappingid"
       - in: "body"
         name: "body"
-        required: false
+        required: true
         schema:
           $ref: "#/definitions/EventActivityMapping"
       responses:
@@ -312,9 +353,6 @@ paths:
       operationId: "getEventSubjectMappings"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "$page"
         in: "query"
@@ -375,18 +413,12 @@ paths:
       operationId: "postEventSubjectMappings"
       consumes:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - in: "body"
         name: "body"
-        required: false
+        required: true
         schema:
           $ref: "#/definitions/EventSubjectMapping"
       responses:
@@ -405,9 +437,6 @@ paths:
       operationId: "getEventSubjectMappingsEventSubjectMappingid"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "eventSubjectMappingid"
         in: "path"
@@ -432,14 +461,8 @@ paths:
       operationId: "putEventSubjectMappingsEventSubjectMappingid"
       consumes:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "eventSubjectMappingid"
         in: "path"
@@ -449,7 +472,7 @@ paths:
         x-example: "sample eventSubjectMappingid"
       - in: "body"
         name: "body"
-        required: false
+        required: true
         schema:
           $ref: "#/definitions/EventSubjectMapping"
       responses:
@@ -486,9 +509,6 @@ paths:
       operationId: "getEvents"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "$sort"
         in: "query"
@@ -556,18 +576,12 @@ paths:
       operationId: "postEvents"
       consumes:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - in: "body"
         name: "body"
-        required: false
+        required: true
         schema:
           $ref: "#/definitions/Event"
       responses:
@@ -586,9 +600,6 @@ paths:
       operationId: "getEventsEventid"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "eventid"
         in: "path"
@@ -613,14 +624,8 @@ paths:
       operationId: "putEventsEventid"
       consumes:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "eventid"
         in: "path"
@@ -630,7 +635,7 @@ paths:
         x-example: "sample eventid"
       - in: "body"
         name: "body"
-        required: false
+        required: true
         schema:
           $ref: "#/definitions/Event"
       responses:
@@ -667,9 +672,6 @@ paths:
       operationId: "getObservations"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "activity"
         in: "query"
@@ -751,18 +753,12 @@ paths:
       operationId: "postObservations"
       consumes:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - in: "body"
         name: "body"
-        required: false
+        required: true
         schema:
           $ref: "#/definitions/Observation"
       responses:
@@ -781,9 +777,6 @@ paths:
       operationId: "getObservationsObservationid"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "observationid"
         in: "path"
@@ -808,14 +801,8 @@ paths:
       operationId: "putObservationsObservationid"
       consumes:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "observationid"
         in: "path"
@@ -825,7 +812,7 @@ paths:
         x-example: "sample observationid"
       - in: "body"
         name: "body"
-        required: false
+        required: true
         schema:
           $ref: "#/definitions/Observation"
       responses:
@@ -862,9 +849,6 @@ paths:
       operationId: "getSubjects"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "$size"
         in: "query"
@@ -918,18 +902,12 @@ paths:
       operationId: "postSubjects"
       consumes:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - in: "body"
         name: "body"
-        required: false
+        required: true
         schema:
           $ref: "#/definitions/Subject"
       responses:
@@ -948,9 +926,6 @@ paths:
       operationId: "getSubjectsSubjectid"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "subjectid"
         in: "path"
@@ -975,14 +950,8 @@ paths:
       operationId: "putSubjectsSubjectid"
       consumes:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       produces:
       - "application/json"
-      - "application/x-yaml"
-      - "application/xml"
-      - "text/xml"
       parameters:
       - name: "subjectid"
         in: "path"
@@ -992,7 +961,7 @@ paths:
         x-example: "sample subjectid"
       - in: "body"
         name: "body"
-        required: false
+        required: true
         schema:
           $ref: "#/definitions/Subject"
       responses:
@@ -1051,13 +1020,13 @@ definitions:
       minLegalValue:
         type: "number"
         format: "double"
-        example: 1.100000000000000088817841970012523233890533447265625
-        default: 0
+        example: 1.1
+        default: 0.0
       maxLegalValue:
         type: "number"
         format: "double"
-        example: 1.100000000000000088817841970012523233890533447265625
-        default: 100
+        example: 1.1
+        default: 100.0
     example: "{\"id\":\"sample id\",\"name\":\"sample name\",\"description\":\"sample\
       \ description\",\"units\":\"J.s^-1\",\"minLegalValue\":1.1,\"maxLegalValue\"\
       :1.1}"
@@ -1156,8 +1125,8 @@ definitions:
       value:
         type: "number"
         format: "double"
-        example: 0
-        default: 0
+        example: 0.0
+        default: 0.0
       timestamp_s_unix_epoch_utc:
         type: "integer"
         format: "int64"

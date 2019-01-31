@@ -2,6 +2,19 @@
 
 
 /**
+ * Deletes a Activity
+ *
+ * activityid String Identifier of the Activity
+ * no response value expected for this operation
+ **/
+exports.deleteActivitiesActivityid = function(activityid) {
+  return new Promise(function(resolve, reject) {
+    resolve();
+  });
+}
+
+
+/**
  * Deletes a EventActivityMapping
  *
  * eventActivityMappingid String Identifier of the EventActivityMapping
@@ -331,9 +344,28 @@ exports.getSubjectsSubjectid = function(subjectid) {
 
 
 /**
+ * Adds a Activity
+ *
+ * body Activity 
+ * returns Activity
+ **/
+exports.postActivities = function(body) {
+  return new Promise(function(resolve, reject) {
+    var examples = {};
+    examples['application/json'] = "{\"id\":\"sample id\",\"name\":\"sample name\",\"description\":\"sample description\",\"units\":\"J.s^-1\",\"minLegalValue\":1.1,\"maxLegalValue\":1.1}";
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
+  });
+}
+
+
+/**
  * Adds a EventActivityMapping
  *
- * body EventActivityMapping  (optional)
+ * body EventActivityMapping 
  * returns EventActivityMapping
  **/
 exports.postEventActivityMappings = function(body) {
@@ -352,7 +384,7 @@ exports.postEventActivityMappings = function(body) {
 /**
  * Adds a EventSubjectMapping
  *
- * body EventSubjectMapping  (optional)
+ * body EventSubjectMapping 
  * returns EventSubjectMapping
  **/
 exports.postEventSubjectMappings = function(body) {
@@ -371,7 +403,7 @@ exports.postEventSubjectMappings = function(body) {
 /**
  * Adds a Event
  *
- * body Event  (optional)
+ * body Event 
  * returns Event
  **/
 exports.postEvents = function(body) {
@@ -390,7 +422,7 @@ exports.postEvents = function(body) {
 /**
  * Adds a Observation
  *
- * body Observation  (optional)
+ * body Observation 
  * returns Observation
  **/
 exports.postObservations = function(body) {
@@ -409,7 +441,7 @@ exports.postObservations = function(body) {
 /**
  * Adds a Subject
  *
- * body Subject  (optional)
+ * body Subject 
  * returns Subject
  **/
 exports.postSubjects = function(body) {
@@ -426,10 +458,30 @@ exports.postSubjects = function(body) {
 
 
 /**
+ * Stores a Activity
+ *
+ * activityid String Identifier of the Activity
+ * body Activity 
+ * returns Activity
+ **/
+exports.putActivitiesActivityid = function(activityid,body) {
+  return new Promise(function(resolve, reject) {
+    var examples = {};
+    examples['application/json'] = "{\"id\":\"sample id\",\"name\":\"sample name\",\"description\":\"sample description\",\"units\":\"J.s^-1\",\"minLegalValue\":1.1,\"maxLegalValue\":1.1}";
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
+  });
+}
+
+
+/**
  * Stores a EventActivityMapping
  *
  * eventActivityMappingid String Identifier of the EventActivityMapping
- * body EventActivityMapping  (optional)
+ * body EventActivityMapping 
  * returns EventActivityMapping
  **/
 exports.putEventActivityMappingsEventActivityMappingid = function(eventActivityMappingid,body) {
@@ -449,7 +501,7 @@ exports.putEventActivityMappingsEventActivityMappingid = function(eventActivityM
  * Stores a EventSubjectMapping
  *
  * eventSubjectMappingid String Identifier of the EventSubjectMapping
- * body EventSubjectMapping  (optional)
+ * body EventSubjectMapping 
  * returns EventSubjectMapping
  **/
 exports.putEventSubjectMappingsEventSubjectMappingid = function(eventSubjectMappingid,body) {
@@ -469,7 +521,7 @@ exports.putEventSubjectMappingsEventSubjectMappingid = function(eventSubjectMapp
  * Stores a Event
  *
  * eventid String Identifier of the Event
- * body Event  (optional)
+ * body Event 
  * returns Event
  **/
 exports.putEventsEventid = function(eventid,body) {
@@ -489,7 +541,7 @@ exports.putEventsEventid = function(eventid,body) {
  * Stores a Observation
  *
  * observationid String Identifier of the Observation
- * body Observation  (optional)
+ * body Observation 
  * returns Observation
  **/
 exports.putObservationsObservationid = function(observationid,body) {
@@ -509,7 +561,7 @@ exports.putObservationsObservationid = function(observationid,body) {
  * Stores a Subject
  *
  * subjectid String Identifier of the Subject
- * body Subject  (optional)
+ * body Subject 
  * returns Subject
  **/
 exports.putSubjectsSubjectid = function(subjectid,body) {
