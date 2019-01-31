@@ -1,0 +1,1056 @@
+---
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.1.0"
+  title: "activityevents"
+  contact:
+    name: "msf.db.api@gmail.com"
+    email: "msf.db.api@gmail.com"
+host: "activityevents.restlet.net"
+basePath: "/v1"
+schemes:
+- "https"
+paths:
+  /activities/:
+    get:
+      tags:
+      - "ActivityEvents"
+      description: "Loads a list of Activity"
+      operationId: "getActivities"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "units"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ units"
+        x-example: "sample units"
+      - name: "$page"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Number of the page to retrieve. Integer value."
+        x-example: "sample $page"
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ name"
+        x-example: "sample name"
+      - name: "$sort"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Order in which to retrieve the results. Multiple sort criteria\
+          \ can be passed. Example: sort=age ASC,height DESC"
+        x-example: "sample $sort"
+      - name: "maxLegalValue"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ maxLegalValue"
+        x-example: "sample maxLegalValue"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ id"
+        x-example: "sample id"
+      - name: "minLegalValue"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ minLegalValue"
+        x-example: "sample minLegalValue"
+      - name: "$size"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Size of the page to retrieve. Integer value"
+        x-example: "sample $size"
+      - name: "description"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ description"
+        x-example: "sample description"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Activity"
+        400:
+          description: "Status 400"
+      security:
+      - HTTP_BASIC: []
+    post:
+      tags:
+      - "ActivityEvents"
+      description: "Adds a Activity"
+      operationId: "postActivities"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "body"
+        in: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Activity"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/Activity"
+      security:
+      - HTTP_BASIC: []
+  /activities/{activityid}:
+    get:
+      tags:
+      - "ActivityEvents"
+      description: "Loads a Activity"
+      operationId: "getActivitiesActivityid"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/Activity"
+        400:
+          description: "Status 400"
+      security:
+      - HTTP_BASIC: []
+    put:
+      tags:
+      - "ActivityEvents"
+      description: "Stores a Activity"
+      operationId: "putActivitiesActivityid"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "body"
+        in: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Activity"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/Activity"
+      security:
+      - HTTP_BASIC: []
+    delete:
+      tags:
+      - "ActivityEvents"
+      description: "Deletes a Activity"
+      operationId: "deleteActivitiesActivityid"
+      parameters: []
+      responses:
+        200:
+          description: "Status 200"
+      security:
+      - HTTP_BASIC: []
+    parameters:
+    - name: "activityid"
+      in: "path"
+      required: true
+      type: "string"
+      description: "Identifier of the Activity"
+      x-example: "sample activityid"
+  /eventActivityMappings/:
+    get:
+      tags:
+      - "ActivityEvents"
+      description: "Loads a list of EventActivityMapping"
+      operationId: "getEventActivityMappings"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "$size"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Size of the page to retrieve. Integer value"
+        x-example: "sample $size"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ id"
+        x-example: "sample id"
+      - name: "event"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ event"
+        x-example: "sample event"
+      - name: "$page"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Number of the page to retrieve. Integer value."
+        x-example: "sample $page"
+      - name: "$sort"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Order in which to retrieve the results. Multiple sort criteria\
+          \ can be passed. Example: sort=age ASC,height DESC"
+        x-example: "sample $sort"
+      - name: "activity"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ activity"
+        x-example: "sample activity"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/EventActivityMapping"
+        400:
+          description: "Status 400"
+      security:
+      - HTTP_BASIC: []
+    post:
+      tags:
+      - "ActivityEvents"
+      description: "Adds a EventActivityMapping"
+      operationId: "postEventActivityMappings"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "body"
+        in: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/EventActivityMapping"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/EventActivityMapping"
+      security:
+      - HTTP_BASIC: []
+  /eventActivityMappings/{eventActivityMappingid}:
+    get:
+      tags:
+      - "ActivityEvents"
+      description: "Loads a EventActivityMapping"
+      operationId: "getEventActivityMappingsEventActivityMappingid"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/EventActivityMapping"
+        400:
+          description: "Status 400"
+      security:
+      - HTTP_BASIC: []
+    put:
+      tags:
+      - "ActivityEvents"
+      description: "Stores a EventActivityMapping"
+      operationId: "putEventActivityMappingsEventActivityMappingid"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "body"
+        in: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/EventActivityMapping"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/EventActivityMapping"
+      security:
+      - HTTP_BASIC: []
+    delete:
+      tags:
+      - "ActivityEvents"
+      description: "Deletes a EventActivityMapping"
+      operationId: "deleteEventActivityMappingsEventActivityMappingid"
+      parameters: []
+      responses:
+        200:
+          description: "Status 200"
+      security:
+      - HTTP_BASIC: []
+    parameters:
+    - name: "eventActivityMappingid"
+      in: "path"
+      required: true
+      type: "string"
+      description: "Identifier of the EventActivityMapping"
+      x-example: "sample eventActivityMappingid"
+  /eventSubjectMappings/:
+    get:
+      tags:
+      - "ActivityEvents"
+      description: "Loads a list of EventSubjectMapping"
+      operationId: "getEventSubjectMappings"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "$page"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Number of the page to retrieve. Integer value."
+        x-example: "sample $page"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ id"
+        x-example: "sample id"
+      - name: "$size"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Size of the page to retrieve. Integer value"
+        x-example: "sample $size"
+      - name: "subject"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ subject"
+        x-example: "sample subject"
+      - name: "event"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ event"
+        x-example: "sample event"
+      - name: "$sort"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Order in which to retrieve the results. Multiple sort criteria\
+          \ can be passed. Example: sort=age ASC,height DESC"
+        x-example: "sample $sort"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/EventSubjectMapping"
+        400:
+          description: "Status 400"
+      security:
+      - HTTP_BASIC: []
+    post:
+      tags:
+      - "ActivityEvents"
+      description: "Adds a EventSubjectMapping"
+      operationId: "postEventSubjectMappings"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "body"
+        in: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/EventSubjectMapping"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/EventSubjectMapping"
+      security:
+      - HTTP_BASIC: []
+  /eventSubjectMappings/{eventSubjectMappingid}:
+    get:
+      tags:
+      - "ActivityEvents"
+      description: "Loads a EventSubjectMapping"
+      operationId: "getEventSubjectMappingsEventSubjectMappingid"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/EventSubjectMapping"
+        400:
+          description: "Status 400"
+      security:
+      - HTTP_BASIC: []
+    put:
+      tags:
+      - "ActivityEvents"
+      description: "Stores a EventSubjectMapping"
+      operationId: "putEventSubjectMappingsEventSubjectMappingid"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "body"
+        in: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/EventSubjectMapping"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/EventSubjectMapping"
+      security:
+      - HTTP_BASIC: []
+    delete:
+      tags:
+      - "ActivityEvents"
+      description: "Deletes a EventSubjectMapping"
+      operationId: "deleteEventSubjectMappingsEventSubjectMappingid"
+      parameters: []
+      responses:
+        200:
+          description: "Status 200"
+      security:
+      - HTTP_BASIC: []
+    parameters:
+    - name: "eventSubjectMappingid"
+      in: "path"
+      required: true
+      type: "string"
+      description: "Identifier of the EventSubjectMapping"
+      x-example: "sample eventSubjectMappingid"
+  /events/:
+    get:
+      tags:
+      - "ActivityEvents"
+      description: "Loads a list of Event"
+      operationId: "getEvents"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "$sort"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Order in which to retrieve the results. Multiple sort criteria\
+          \ can be passed. Example: sort=age ASC,height DESC"
+        x-example: "sample $sort"
+      - name: "date"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ date"
+        x-example: "sample date"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ id"
+        x-example: "sample id"
+      - name: "$page"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Number of the page to retrieve. Integer value."
+        x-example: "sample $page"
+      - name: "$size"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Size of the page to retrieve. Integer value"
+        x-example: "sample $size"
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ name"
+        x-example: "sample name"
+      - name: "postcode"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ postcode"
+        x-example: "sample postcode"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Event"
+        400:
+          description: "Status 400"
+      security:
+      - HTTP_BASIC: []
+    post:
+      tags:
+      - "ActivityEvents"
+      description: "Adds a Event"
+      operationId: "postEvents"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "body"
+        in: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Event"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/Event"
+      security:
+      - HTTP_BASIC: []
+  /events/{eventid}:
+    get:
+      tags:
+      - "ActivityEvents"
+      description: "Loads a Event"
+      operationId: "getEventsEventid"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/Event"
+        400:
+          description: "Status 400"
+      security:
+      - HTTP_BASIC: []
+    put:
+      tags:
+      - "ActivityEvents"
+      description: "Stores a Event"
+      operationId: "putEventsEventid"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "body"
+        in: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Event"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/Event"
+      security:
+      - HTTP_BASIC: []
+    delete:
+      tags:
+      - "ActivityEvents"
+      description: "Deletes a Event"
+      operationId: "deleteEventsEventid"
+      parameters: []
+      responses:
+        200:
+          description: "Status 200"
+      security:
+      - HTTP_BASIC: []
+    parameters:
+    - name: "eventid"
+      in: "path"
+      required: true
+      type: "string"
+      description: "Identifier of the Event"
+      x-example: "sample eventid"
+  /observations/:
+    get:
+      tags:
+      - "ActivityEvents"
+      description: "Loads a list of Observation"
+      operationId: "getObservations"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "activity"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ activity"
+        x-example: "sample activity"
+      - name: "event"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ event"
+        x-example: "sample event"
+      - name: "$size"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Size of the page to retrieve. Integer value"
+        x-example: "sample $size"
+      - name: "$page"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Number of the page to retrieve. Integer value."
+        x-example: "sample $page"
+      - name: "subject"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ subject"
+        x-example: "sample subject"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ id"
+        x-example: "sample id"
+      - name: "value"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ value"
+        x-example: "sample value"
+      - name: "$sort"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Order in which to retrieve the results. Multiple sort criteria\
+          \ can be passed. Example: sort=age ASC,height DESC"
+        x-example: "sample $sort"
+      - name: "timestamp_s_unix_epoch_utc"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ timestamp_s_unix_epoch_utc"
+        x-example: "sample timestamp_s_unix_epoch_utc"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Observation"
+        400:
+          description: "Status 400"
+      security:
+      - HTTP_BASIC: []
+    post:
+      tags:
+      - "ActivityEvents"
+      description: "Adds a Observation"
+      operationId: "postObservations"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "body"
+        in: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Observation"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/Observation"
+      security:
+      - HTTP_BASIC: []
+  /observations/{observationid}:
+    get:
+      tags:
+      - "ActivityEvents"
+      description: "Loads a Observation"
+      operationId: "getObservationsObservationid"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/Observation"
+        400:
+          description: "Status 400"
+      security:
+      - HTTP_BASIC: []
+    put:
+      tags:
+      - "ActivityEvents"
+      description: "Stores a Observation"
+      operationId: "putObservationsObservationid"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "body"
+        in: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Observation"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/Observation"
+      security:
+      - HTTP_BASIC: []
+    delete:
+      tags:
+      - "ActivityEvents"
+      description: "Deletes a Observation"
+      operationId: "deleteObservationsObservationid"
+      parameters: []
+      responses:
+        200:
+          description: "Status 200"
+      security:
+      - HTTP_BASIC: []
+    parameters:
+    - name: "observationid"
+      in: "path"
+      required: true
+      type: "string"
+      description: "Identifier of the Observation"
+      x-example: "sample observationid"
+  /subjects/:
+    get:
+      tags:
+      - "ActivityEvents"
+      description: "Loads a list of Subject"
+      operationId: "getSubjects"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "$size"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Size of the page to retrieve. Integer value"
+        x-example: "sample $size"
+      - name: "$page"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Number of the page to retrieve. Integer value."
+        x-example: "sample $page"
+      - name: "$sort"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Order in which to retrieve the results. Multiple sort criteria\
+          \ can be passed. Example: sort=age ASC,height DESC"
+        x-example: "sample $sort"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ id"
+        x-example: "sample id"
+      - name: "nickname"
+        in: "query"
+        required: false
+        type: "string"
+        description: "Allows to filter the collections of result by the value of field\
+          \ nickname"
+        x-example: "sample nickname"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Subject"
+        400:
+          description: "Status 400"
+      security:
+      - HTTP_BASIC: []
+    post:
+      tags:
+      - "ActivityEvents"
+      description: "Adds a Subject"
+      operationId: "postSubjects"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "body"
+        in: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Subject"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/Subject"
+      security:
+      - HTTP_BASIC: []
+  /subjects/{subjectid}:
+    get:
+      tags:
+      - "ActivityEvents"
+      description: "Loads a Subject"
+      operationId: "getSubjectsSubjectid"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/Subject"
+        400:
+          description: "Status 400"
+      security:
+      - HTTP_BASIC: []
+    put:
+      tags:
+      - "ActivityEvents"
+      description: "Stores a Subject"
+      operationId: "putSubjectsSubjectid"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "body"
+        in: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Subject"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/Subject"
+      security:
+      - HTTP_BASIC: []
+    delete:
+      tags:
+      - "ActivityEvents"
+      description: "Deletes a Subject"
+      operationId: "deleteSubjectsSubjectid"
+      parameters: []
+      responses:
+        200:
+          description: "Status 200"
+      security:
+      - HTTP_BASIC: []
+    parameters:
+    - name: "subjectid"
+      in: "path"
+      required: true
+      type: "string"
+      description: "Identifier of the Subject"
+      x-example: "sample subjectid"
+securityDefinitions:
+  HTTP_BASIC:
+    type: "basic"
+definitions:
+  Activity:
+    type: "object"
+    required:
+    - "description"
+    - "id"
+    - "maxLegalValue"
+    - "minLegalValue"
+    - "name"
+    - "units"
+    properties:
+      id:
+        type: "string"
+        description: "Auto-generated primary key field"
+        example: "sample id"
+      name:
+        type: "string"
+        example: "sample name"
+      description:
+        type: "string"
+        example: "sample description"
+      units:
+        type: "string"
+        example: "J.s^-1"
+      minLegalValue:
+        type: "number"
+        format: "double"
+        default: 0.0
+        example: 1.1
+      maxLegalValue:
+        type: "number"
+        format: "double"
+        default: 100.0
+        example: 1.1
+    example: "{\"id\":\"sample id\",\"name\":\"sample name\",\"description\":\"sample\
+      \ description\",\"units\":\"J.s^-1\",\"minLegalValue\":1.1,\"maxLegalValue\"\
+      :1.1}"
+  Event:
+    type: "object"
+    required:
+    - "date"
+    - "id"
+    - "name"
+    properties:
+      id:
+        type: "string"
+        description: "Auto-generated primary key field"
+        example: "sample id"
+      name:
+        type: "string"
+        default: "Untitled Event"
+        example: "sample name"
+      date:
+        type: "string"
+        default: "1970-01-01"
+        example: "2017-12-31"
+      postcode:
+        type: "string"
+        example: "M3 4FP"
+    example: "{\"id\":\"sample id\",\"name\":\"sample name\",\"date\":\"2017-12-31\"\
+      ,\"postcode\":\"M3 4FP\"}"
+  EventActivityMapping:
+    type: "object"
+    required:
+    - "activity"
+    - "event"
+    - "id"
+    properties:
+      id:
+        type: "string"
+        description: "Auto-generated primary key field"
+        example: "sample id"
+      activity:
+        type: "string"
+        description: "This property is a reference to a Activity"
+        example: "sample activity"
+      event:
+        type: "string"
+        description: "This property is a reference to a Event"
+        example: "sample event"
+    example: "{\"id\":\"sample id\",\"activity\":\"sample activity\",\"event\":\"\
+      sample event\"}"
+  EventSubjectMapping:
+    type: "object"
+    required:
+    - "event"
+    - "id"
+    - "subject"
+    properties:
+      id:
+        type: "string"
+        description: "Auto-generated primary key field"
+        example: "sample id"
+      subject:
+        type: "string"
+        description: "This property is a reference to a Subject"
+        example: "sample subject"
+      event:
+        type: "string"
+        description: "This property is a reference to a Event"
+        example: "sample event"
+    example: "{\"id\":\"sample id\",\"subject\":\"sample subject\",\"event\":\"sample\
+      \ event\"}"
+  Observation:
+    type: "object"
+    required:
+    - "activity"
+    - "event"
+    - "id"
+    - "subject"
+    - "timestamp_s_unix_epoch_utc"
+    - "value"
+    properties:
+      id:
+        type: "string"
+        description: "Auto-generated primary key field"
+        example: "sample id"
+      event:
+        type: "string"
+        description: "This property is a reference to a Event"
+        example: "sample event"
+      activity:
+        type: "string"
+        description: "This property is a reference to a Activity"
+        example: "sample activity"
+      subject:
+        type: "string"
+        description: "This property is a reference to a Subject"
+        example: "sample subject"
+      value:
+        type: "number"
+        format: "double"
+        default: 0.0
+        example: 0
+      timestamp_s_unix_epoch_utc:
+        type: "integer"
+        format: "int64"
+        default: 0
+        example: 1510568560
+    example: "{\"id\":\"sample id\",\"event\":\"sample event\",\"activity\":\"sample\
+      \ activity\",\"subject\":\"sample subject\",\"value\":0.0,\"timestamp_s_unix_epoch_utc\"\
+      :1510568560}"
+  Subject:
+    type: "object"
+    required:
+    - "id"
+    - "nickname"
+    properties:
+      id:
+        type: "string"
+        description: "Auto-generated primary key field"
+        example: "sample id"
+      nickname:
+        type: "string"
+        default: "Anonymous"
+        example: "sample nickname"
+    example: "{\"id\":\"sample id\",\"nickname\":\"sample nickname\"}"
