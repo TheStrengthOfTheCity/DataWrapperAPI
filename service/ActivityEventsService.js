@@ -96,7 +96,21 @@ exports.deleteSubjectsSubjectid = function(subjectid) {
 exports.getActivities = function(units,$page,name,$sort,maxLegalValue,id,minLegalValue,$size,description) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = [ "{\"id\":\"sample id\",\"name\":\"sample name\",\"description\":\"sample description\",\"units\":\"J.s^-1\",\"minLegalValue\":1.1,\"maxLegalValue\":1.1}", "{\"id\":\"sample id\",\"name\":\"sample name\",\"description\":\"sample description\",\"units\":\"J.s^-1\",\"minLegalValue\":1.1,\"maxLegalValue\":1.1}" ];
+    examples['application/json'] = [ {
+  "name" : "name",
+  "description" : "description",
+  "minLegalValue" : 0.8008281904610115,
+  "maxLegalValue" : 6.027456183070403,
+  "id" : "id",
+  "units" : "units"
+}, {
+  "name" : "name",
+  "description" : "description",
+  "minLegalValue" : 0.8008281904610115,
+  "maxLegalValue" : 6.027456183070403,
+  "id" : "id",
+  "units" : "units"
+} ];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -115,7 +129,14 @@ exports.getActivities = function(units,$page,name,$sort,maxLegalValue,id,minLega
 exports.getActivitiesActivityid = function(activityid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"name\":\"sample name\",\"description\":\"sample description\",\"units\":\"J.s^-1\",\"minLegalValue\":1.1,\"maxLegalValue\":1.1}";
+    examples['application/json'] = {
+  "name" : "name",
+  "description" : "description",
+  "minLegalValue" : 0.8008281904610115,
+  "maxLegalValue" : 6.027456183070403,
+  "id" : "id",
+  "units" : "units"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -139,7 +160,15 @@ exports.getActivitiesActivityid = function(activityid) {
 exports.getEventActivityMappings = function($size,id,event,$page,$sort,activity) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = [ "{\"id\":\"sample id\",\"activity\":\"sample activity\",\"event\":\"sample event\"}", "{\"id\":\"sample id\",\"activity\":\"sample activity\",\"event\":\"sample event\"}" ];
+    examples['application/json'] = [ {
+  "activity" : "activity",
+  "id" : "id",
+  "event" : "event"
+}, {
+  "activity" : "activity",
+  "id" : "id",
+  "event" : "event"
+} ];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -158,7 +187,11 @@ exports.getEventActivityMappings = function($size,id,event,$page,$sort,activity)
 exports.getEventActivityMappingsEventActivityMappingid = function(eventActivityMappingid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"activity\":\"sample activity\",\"event\":\"sample event\"}";
+    examples['application/json'] = {
+  "activity" : "activity",
+  "id" : "id",
+  "event" : "event"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -182,7 +215,15 @@ exports.getEventActivityMappingsEventActivityMappingid = function(eventActivityM
 exports.getEventSubjectMappings = function($page,id,$size,subject,event,$sort) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = [ "{\"id\":\"sample id\",\"subject\":\"sample subject\",\"event\":\"sample event\"}", "{\"id\":\"sample id\",\"subject\":\"sample subject\",\"event\":\"sample event\"}" ];
+    examples['application/json'] = [ {
+  "subject" : "subject",
+  "id" : "id",
+  "event" : "event"
+}, {
+  "subject" : "subject",
+  "id" : "id",
+  "event" : "event"
+} ];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -201,7 +242,11 @@ exports.getEventSubjectMappings = function($page,id,$size,subject,event,$sort) {
 exports.getEventSubjectMappingsEventSubjectMappingid = function(eventSubjectMappingid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"subject\":\"sample subject\",\"event\":\"sample event\"}";
+    examples['application/json'] = {
+  "subject" : "subject",
+  "id" : "id",
+  "event" : "event"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -226,7 +271,17 @@ exports.getEventSubjectMappingsEventSubjectMappingid = function(eventSubjectMapp
 exports.getEvents = function($sort,date,id,$page,$size,name,postcode) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = [ "{\"id\":\"sample id\",\"name\":\"sample name\",\"date\":\"2017-12-31\",\"postcode\":\"M3 4FP\"}", "{\"id\":\"sample id\",\"name\":\"sample name\",\"date\":\"2017-12-31\",\"postcode\":\"M3 4FP\"}" ];
+    examples['application/json'] = [ {
+  "date" : "1970-01-01",
+  "name" : "Untitled Event",
+  "postcode" : "postcode",
+  "id" : "id"
+}, {
+  "date" : "1970-01-01",
+  "name" : "Untitled Event",
+  "postcode" : "postcode",
+  "id" : "id"
+} ];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -245,7 +300,12 @@ exports.getEvents = function($sort,date,id,$page,$size,name,postcode) {
 exports.getEventsEventid = function(eventid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"name\":\"sample name\",\"date\":\"2017-12-31\",\"postcode\":\"M3 4FP\"}";
+    examples['application/json'] = {
+  "date" : "1970-01-01",
+  "name" : "Untitled Event",
+  "postcode" : "postcode",
+  "id" : "id"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -272,7 +332,21 @@ exports.getEventsEventid = function(eventid) {
 exports.getObservations = function(activity,event,$size,$page,subject,id,value,$sort,timestamp_s_unix_epoch_utc) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = [ "{\"id\":\"sample id\",\"event\":\"sample event\",\"activity\":\"sample activity\",\"subject\":\"sample subject\",\"value\":0.0,\"timestamp_s_unix_epoch_utc\":1510568560}", "{\"id\":\"sample id\",\"event\":\"sample event\",\"activity\":\"sample activity\",\"subject\":\"sample subject\",\"value\":0.0,\"timestamp_s_unix_epoch_utc\":1510568560}" ];
+    examples['application/json'] = [ {
+  "timestamp_s_unix_epoch_utc" : 6,
+  "activity" : "activity",
+  "subject" : "subject",
+  "id" : "id",
+  "event" : "event",
+  "value" : 0.8008281904610115
+}, {
+  "timestamp_s_unix_epoch_utc" : 6,
+  "activity" : "activity",
+  "subject" : "subject",
+  "id" : "id",
+  "event" : "event",
+  "value" : 0.8008281904610115
+} ];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -291,7 +365,14 @@ exports.getObservations = function(activity,event,$size,$page,subject,id,value,$
 exports.getObservationsObservationid = function(observationid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"event\":\"sample event\",\"activity\":\"sample activity\",\"subject\":\"sample subject\",\"value\":0.0,\"timestamp_s_unix_epoch_utc\":1510568560}";
+    examples['application/json'] = {
+  "timestamp_s_unix_epoch_utc" : 6,
+  "activity" : "activity",
+  "subject" : "subject",
+  "id" : "id",
+  "event" : "event",
+  "value" : 0.8008281904610115
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -314,7 +395,13 @@ exports.getObservationsObservationid = function(observationid) {
 exports.getSubjects = function($size,$page,$sort,id,nickname) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = [ "{\"id\":\"sample id\",\"nickname\":\"sample nickname\"}", "{\"id\":\"sample id\",\"nickname\":\"sample nickname\"}" ];
+    examples['application/json'] = [ {
+  "nickname" : "Anonymous",
+  "id" : "id"
+}, {
+  "nickname" : "Anonymous",
+  "id" : "id"
+} ];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -333,7 +420,10 @@ exports.getSubjects = function($size,$page,$sort,id,nickname) {
 exports.getSubjectsSubjectid = function(subjectid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"nickname\":\"sample nickname\"}";
+    examples['application/json'] = {
+  "nickname" : "Anonymous",
+  "id" : "id"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -352,7 +442,14 @@ exports.getSubjectsSubjectid = function(subjectid) {
 exports.postActivities = function(body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"name\":\"sample name\",\"description\":\"sample description\",\"units\":\"J.s^-1\",\"minLegalValue\":1.1,\"maxLegalValue\":1.1}";
+    examples['application/json'] = {
+  "name" : "name",
+  "description" : "description",
+  "minLegalValue" : 0.8008281904610115,
+  "maxLegalValue" : 6.027456183070403,
+  "id" : "id",
+  "units" : "units"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -371,7 +468,11 @@ exports.postActivities = function(body) {
 exports.postEventActivityMappings = function(body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"activity\":\"sample activity\",\"event\":\"sample event\"}";
+    examples['application/json'] = {
+  "activity" : "activity",
+  "id" : "id",
+  "event" : "event"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -390,7 +491,11 @@ exports.postEventActivityMappings = function(body) {
 exports.postEventSubjectMappings = function(body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"subject\":\"sample subject\",\"event\":\"sample event\"}";
+    examples['application/json'] = {
+  "subject" : "subject",
+  "id" : "id",
+  "event" : "event"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -409,7 +514,12 @@ exports.postEventSubjectMappings = function(body) {
 exports.postEvents = function(body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"name\":\"sample name\",\"date\":\"2017-12-31\",\"postcode\":\"M3 4FP\"}";
+    examples['application/json'] = {
+  "date" : "1970-01-01",
+  "name" : "Untitled Event",
+  "postcode" : "postcode",
+  "id" : "id"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -428,7 +538,14 @@ exports.postEvents = function(body) {
 exports.postObservations = function(body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"event\":\"sample event\",\"activity\":\"sample activity\",\"subject\":\"sample subject\",\"value\":0.0,\"timestamp_s_unix_epoch_utc\":1510568560}";
+    examples['application/json'] = {
+  "timestamp_s_unix_epoch_utc" : 6,
+  "activity" : "activity",
+  "subject" : "subject",
+  "id" : "id",
+  "event" : "event",
+  "value" : 0.8008281904610115
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -447,7 +564,10 @@ exports.postObservations = function(body) {
 exports.postSubjects = function(body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"nickname\":\"sample nickname\"}";
+    examples['application/json'] = {
+  "nickname" : "Anonymous",
+  "id" : "id"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -467,7 +587,14 @@ exports.postSubjects = function(body) {
 exports.putActivitiesActivityid = function(activityid,body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"name\":\"sample name\",\"description\":\"sample description\",\"units\":\"J.s^-1\",\"minLegalValue\":1.1,\"maxLegalValue\":1.1}";
+    examples['application/json'] = {
+  "name" : "name",
+  "description" : "description",
+  "minLegalValue" : 0.8008281904610115,
+  "maxLegalValue" : 6.027456183070403,
+  "id" : "id",
+  "units" : "units"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -487,7 +614,11 @@ exports.putActivitiesActivityid = function(activityid,body) {
 exports.putEventActivityMappingsEventActivityMappingid = function(eventActivityMappingid,body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"activity\":\"sample activity\",\"event\":\"sample event\"}";
+    examples['application/json'] = {
+  "activity" : "activity",
+  "id" : "id",
+  "event" : "event"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -507,7 +638,11 @@ exports.putEventActivityMappingsEventActivityMappingid = function(eventActivityM
 exports.putEventSubjectMappingsEventSubjectMappingid = function(eventSubjectMappingid,body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"subject\":\"sample subject\",\"event\":\"sample event\"}";
+    examples['application/json'] = {
+  "subject" : "subject",
+  "id" : "id",
+  "event" : "event"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -527,7 +662,12 @@ exports.putEventSubjectMappingsEventSubjectMappingid = function(eventSubjectMapp
 exports.putEventsEventid = function(eventid,body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"name\":\"sample name\",\"date\":\"2017-12-31\",\"postcode\":\"M3 4FP\"}";
+    examples['application/json'] = {
+  "date" : "1970-01-01",
+  "name" : "Untitled Event",
+  "postcode" : "postcode",
+  "id" : "id"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -547,7 +687,14 @@ exports.putEventsEventid = function(eventid,body) {
 exports.putObservationsObservationid = function(observationid,body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"event\":\"sample event\",\"activity\":\"sample activity\",\"subject\":\"sample subject\",\"value\":0.0,\"timestamp_s_unix_epoch_utc\":1510568560}";
+    examples['application/json'] = {
+  "timestamp_s_unix_epoch_utc" : 6,
+  "activity" : "activity",
+  "subject" : "subject",
+  "id" : "id",
+  "event" : "event",
+  "value" : 0.8008281904610115
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -567,7 +714,10 @@ exports.putObservationsObservationid = function(observationid,body) {
 exports.putSubjectsSubjectid = function(subjectid,body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"nickname\":\"sample nickname\"}";
+    examples['application/json'] = {
+  "nickname" : "Anonymous",
+  "id" : "id"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
