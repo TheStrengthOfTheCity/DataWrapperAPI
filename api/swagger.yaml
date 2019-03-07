@@ -7,7 +7,7 @@ info:
   contact:
     name: "strengthofthecity"
     email: "strengthofthecity18@gmail.com"
-host: "activityevents.restlet.net"
+host: "localhost:8080"
 basePath: "/v1"
 tags:
 - name: "Default"
