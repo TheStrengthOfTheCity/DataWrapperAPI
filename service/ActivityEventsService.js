@@ -1,5 +1,6 @@
 'use strict';
 
+var https = require('https');
 
 /**
  * Deletes a Activity
@@ -95,13 +96,11 @@ exports.deleteSubjectsSubjectid = function(subjectid) {
  **/
 exports.getActivities = function(units,$page,name,$sort,maxLegalValue,id,minLegalValue,$size,description) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ "{\"id\":\"sample id\",\"name\":\"sample name\",\"description\":\"sample description\",\"units\":\"J.s^-1\",\"minLegalValue\":1.1,\"maxLegalValue\":1.1}", "{\"id\":\"sample id\",\"name\":\"sample name\",\"description\":\"sample description\",\"units\":\"J.s^-1\",\"minLegalValue\":1.1,\"maxLegalValue\":1.1}" ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    https.get("https://activityevents.restlet.net/v1/activities/", (res) => {
+      res.on('data', (chunk) => {
+        resolve(JSON.parse(chunk));
+      });
+    })
   });
 }
 
