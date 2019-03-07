@@ -18,7 +18,7 @@
     "name" : "ActivityEvents",
     "description" : "Imported from ActivityEvents"
   } ],
-  "schemes" : [ "https" ],
+  "schemes" : [ "http" ],
   "paths" : {
     "/activities/" : {
       "get" : {
