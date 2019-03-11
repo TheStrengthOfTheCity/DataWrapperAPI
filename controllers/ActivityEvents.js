@@ -4,6 +4,8 @@ var utils = require('../utils/writer.js');
 var ActivityEvents = require('../service/ActivityEventsService');
 
 module.exports.deleteActivitiesActivityid = function deleteActivitiesActivityid (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
@@ -34,7 +36,10 @@ module.exports.deleteSubjectsSubjectid = function deleteSubjectsSubjectid (req, 
 };
 
 module.exports.getActivities = function getActivities (req, res, next) {
-  res.writeHead(301, {'Location': 'https://activityevents.restlet.net' + req.url});
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 

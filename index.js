@@ -9,11 +9,6 @@ var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
 var serverPort = process.env.PORT || 8080;
 
-var express = require('express');
-var cors = require('cors');
-
-express().use(cors());
-
 // swaggerRouter configuration
 var options = {
   swaggerUi: path.join(__dirname, '/swagger.json'),
