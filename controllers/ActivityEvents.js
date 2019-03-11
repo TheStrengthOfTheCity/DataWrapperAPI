@@ -34,7 +34,7 @@ module.exports.deleteSubjectsSubjectid = function deleteSubjectsSubjectid (req, 
 };
 
 module.exports.getActivities = function getActivities (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
+  res.writeHead(301, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
