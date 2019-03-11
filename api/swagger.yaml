@@ -7,7 +7,7 @@ info:
   contact:
     name: "strengthofthecity"
     email: "strengthofthecity18@gmail.com"
-host: "localhost:8080"
+host: "leaderboarddb.herokuapp.com"
 basePath: "/v1"
 tags:
 - name: "Default"
@@ -15,7 +15,7 @@ tags:
 - name: "ActivityEvents"
   description: "Imported from ActivityEvents"
 schemes:
-- "http"
+- "https"
 paths:
   /activities/:
     get:
