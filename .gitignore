@@ -1,4 +1,3 @@
-.vscode
 *.iml
 out/
 *.ipr
@@ -24,7 +23,6 @@ packages/
 .pub
 .packages
 .vagrant/
-.vscode/
 
 .settings
 

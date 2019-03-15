@@ -15,7 +15,7 @@ tags:
 - name: "ActivityEvents"
   description: "Imported from ActivityEvents"
 schemes:
-- "http"
+- "https"
 paths:
   /activities/:
     get:
@@ -739,6 +739,12 @@ paths:
         required: false
         type: "string"
         x-example: "sample timestamp_s_unix_epoch_utc"
+      - name: "scores"
+        in: "query"
+        description: "Allows to get scores instead of observations"
+        required: false
+        type: "boolean"
+        x-example: "sample scores"
       responses:
         200:
           description: "Status 200"
