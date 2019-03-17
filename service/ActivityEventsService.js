@@ -5,55 +5,38 @@ var errApi = require('../utils/error');
 
 //SWAGGER GENERATED CODE
 
-/**
- * Deletes a Activity
- *
- * activityid String Identifier of the Activity
- * no response value expected for this operation
- **/
-exports.deleteActivitiesActivityid = function(activityid) {
+//#region CREATE
+
+exports.postObservations = function(body) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var id = body.id;
+    var event = body.event;
+    var activity = body.activity;
+    var subject = body.subject;
+    var value = body.value;
+
+    database.postScores(id, event, activity, subject, value)
+    .then(resolve)
+    .catch(function(e){
+      switch(e.statusCode){
+        case database.errors.DATABASE_ERROR:
+        // remove database specific error - will leak information.
+        reject (errApi.create500Error("something terrible happened with the database. Sorry..."));
+        break;
+        case database.errors.INTERNAL_ERROR:
+        reject(errApi.create500Error(e.message));
+        break;
+        case database.errors.PARAMETER_ERROR:
+        reject(errApi.create400Error(e.message));
+        break;
+      }
+    });
   });
 }
 
-/**
- * Deletes a Event
- *
- * eventid String Identifier of the Event
- * no response value expected for this operation
- **/
-exports.deleteEventsEventid = function(eventid) {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
+//#endregion
 
-
-/**
- * Deletes a Observation
- *
- * observationid String Identifier of the Observation
- * no response value expected for this operation
- **/
-exports.deleteObservationsObservationid = function(observationid) {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
-
-
-/**
- * Deletes a Subject
- *
- * subjectid String Identifier of the Subject
- * no response value expected for this operation
- **/
-exports.deleteSubjectsSubjectid = function(subjectid) {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
+//#region READ
 
 exports.getScores = function (id, event, activity, subject, value, $page, $size, $sort) {
   return new Promise(function(resolve, reject) {
@@ -72,44 +55,128 @@ exports.getScores = function (id, event, activity, subject, value, $page, $size,
         reject(errApi.create400Error(e.message));
         break;
       }
-    })
+    });
   });
 }
 
-/**
- * Adds a Observation
- *
- * body Observation  (optional)
- * returns Observation
- **/
-exports.postObservations = function(body) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"event\":\"sample event\",\"activity\":\"sample activity\",\"subject\":\"sample subject\",\"value\":0.0,\"timestamp_s_unix_epoch_utc\":1510568560}";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
-}
+//#endregion
 
-/**
- * Stores a Observation
- *
- * observationid String Identifier of the Observation
- * body Observation  (optional)
- * returns Observation
- **/
+//#region UPDATE
+
 exports.putObservationsObservationid = function(observationid,body) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"event\":\"sample event\",\"activity\":\"sample activity\",\"subject\":\"sample subject\",\"value\":0.0,\"timestamp_s_unix_epoch_utc\":1510568560}";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+
+    var id = observationid;
+    var event = body.event;
+    var activity = body.activity;
+    var subject = body.subject;
+    var value = body.value;
+
+    database.putScore(id, event, activity, subject, value)
+    .then(resolve)
+    .catch(function(e){
+      switch(e.statusCode){
+        case database.errors.DATABASE_ERROR:
+        // remove database specific error - will leak information.
+        reject (errApi.create500Error("something terrible happened with the database. Sorry..."));
+        break;
+        case database.errors.INTERNAL_ERROR:
+        reject(errApi.create500Error(e.message));
+        break;
+        case database.errors.PARAMETER_ERROR:
+        reject(errApi.create400Error(e.message));
+        break;
+      }
+    });
   });
 }
 
+//#endregion
+
+//#region DELETE
+
+exports.deleteScoreByObservationID = function(observationID) {
+  return new Promise(function(resolve, reject) {
+    database.deleteScoreByID('id', observationID)
+    .then(resolve)
+    .catch(function(e){
+      switch(e.statusCode){
+        case database.errors.DATABASE_ERROR:
+        // remove database specific error - will leak information.
+        reject (errApi.create500Error("something terrible happened with the database. Sorry..."));
+        break;
+        case database.errors.INTERNAL_ERROR:
+        reject(errApi.create500Error(e.message));
+        break;
+        case database.errors.PARAMETER_ERROR:
+        reject(errApi.create400Error(e.message));
+        break;
+      }
+    });
+  });
+}
+
+exports.deleteScoreByEventID = function(EventID) {
+  return new Promise(function(resolve, reject) {
+    database.deleteScoreByID('event', EventID)
+    .then(resolve)
+    .catch(function(e){
+      switch(e.statusCode){
+        case database.errors.DATABASE_ERROR:
+        // remove database specific error - will leak information.
+        reject (errApi.create500Error("something terrible happened with the database. Sorry..."));
+        break;
+        case database.errors.INTERNAL_ERROR:
+        reject(errApi.create500Error(e.message));
+        break;
+        case database.errors.PARAMETER_ERROR:
+        reject(errApi.create400Error(e.message));
+        break;
+      }
+    });
+  });
+}
+
+exports.deleteScoreByActivityID = function(ActivityID) {
+  return new Promise(function(resolve, reject) {
+    database.deleteScoreByID('activity', ActivityID)
+    .then(resolve)
+    .catch(function(e){
+      switch(e.statusCode){
+        case database.errors.DATABASE_ERROR:
+        // remove database specific error - will leak information.
+        reject (errApi.create500Error("something terrible happened with the database. Sorry..."));
+        break;
+        case database.errors.INTERNAL_ERROR:
+        reject(errApi.create500Error(e.message));
+        break;
+        case database.errors.PARAMETER_ERROR:
+        reject(errApi.create400Error(e.message));
+        break;
+      }
+    });
+  });
+}
+
+exports.deleteScoreBySubjectID = function(SubjectID) {
+  return new Promise(function(resolve, reject) {
+    database.deleteScoreByID('subject', SubjectID)
+    .then(resolve)
+    .catch(function(e){
+      switch(e.statusCode){
+        case database.errors.DATABASE_ERROR:
+        // remove database specific error - will leak information.
+        reject (errApi.create500Error("something terrible happened with the database. Sorry..."));
+        break;
+        case database.errors.INTERNAL_ERROR:
+        reject(errApi.create500Error(e.message));
+        break;
+        case database.errors.PARAMETER_ERROR:
+        reject(errApi.create400Error(e.message));
+        break;
+      }
+    });
+  });
+}
+
+//#endregion

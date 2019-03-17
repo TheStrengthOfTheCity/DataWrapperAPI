@@ -8,6 +8,7 @@ var stall = require('../utils/stall').stall;
 var thePool = null;
 var theConfig = null;
 
+var request = require('request');
 
 exports.errors = {
     PARAMETER_ERROR:-1,
@@ -49,6 +50,45 @@ CREATE TABLE "public"."scores" (
     PRIMARY KEY("id")
 );
 */
+
+var calculateScore = async function(activity, value) {
+    return new Promise ((resolve, reject) => {
+        request('https://activityevents.restlet.net/v1/activities/' + activity, (error, response, body) => {
+            if (error) {
+                reject(error);
+            }
+
+            var obj = JSON.parse(body);
+            var score = ((value - obj.minLegalValue) * 100.0) / (obj.maxLegalValue - obj.minLegalValue);
+            resolve(score);
+        });
+    });
+}
+
+//#region CREATE
+
+exports.postScores = async function(id, event, activity, subject, value) {
+    var score = await calculateScore(activity, value);
+
+    var result = null;
+
+    var query = 'INSERT INTO scores("id","event","activity","subject","score") VALUES($1, $2 , $3, $4, $5) RETURNING "id", "event", "activity", "subject", "score";';
+    
+    var parameters = [id,event,activity,subject,score];
+    try{
+        // the foreign key set-up in the DB ensures we delete all associated events.
+        var response = await thePool.query(query,parameters);
+        result = response.rows[0];
+    }catch(e){
+        throw(createError(errors.PARAMETER_ERROR,e.message));
+    }
+
+    return result;
+}
+
+//#endregion
+
+//#region READ
 
 exports.getScores = async function(id, event, activity, subject, score, $page, $size, $sort){
     var result = null;
@@ -105,3 +145,56 @@ exports.getScores = async function(id, event, activity, subject, score, $page, $
 
     return result;
 }
+
+//#endregion
+
+//#region UPDATE
+
+exports.putScore = async function(id, event, activity, subject, value) {
+    var score = await calculateScore(activity, value);
+
+    var result = null;
+
+    var query = 'UPDATE scores SET "event"= $2::uuid, "activity"= $3::uuid, "subject"= $4::uuid, "score"= $5::numeric(4,2) WHERE "id"= $1::uuid RETURNING "id", "event", "activity", "subject", "score";';  
+    var parameters = [id,event,activity,subject,score];
+    try{
+        // the foreign key set-up in the DB ensures we delete all associated events.
+        var response = await thePool.query(query,parameters);
+        result = response.rows[0];
+
+    }catch(e){
+        throw(createError(errors.PARAMETER_ERROR,e.message));
+    }
+    if(!result){
+        throw(createError(errors.PARAMETER_ERROR,"no result: perhaps the id was incorrect."));
+    }
+    return result;
+}
+
+//#endregion
+
+//#region DELETE
+
+exports.deleteScoreByID = async function(idName, id) {
+    var result = null;
+
+    var stem = 'delete from scores where ';
+    var id_comp = idName + ' = $1';
+    
+    var query = 
+        stem + 
+        id_comp + ";"; 
+        
+
+    var parameters = [id];
+    try{
+        var response = await thePool.query(query,parameters);
+        result = response.rowCount;
+    }catch(e) {
+        throw(createError(errors.PARAMETER_ERROR,e.message));
+    }
+
+    return result;
+}
+
+//#endregion
