@@ -30,8 +30,7 @@ module.exports.postObservations = function postObservations (req, res, next) {
 
   ActivityEvents.postObservations(body)
   .then(function (response) {
-    res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
-    res.end();
+    utils.writeJson(res, response);
   })
   .catch(function (response) {
     utils.writeJson(res, response);
