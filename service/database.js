@@ -39,6 +39,8 @@ exports.test = async function(arg) {
     await stall(500, createError(errors.PARAMETER_ERROR,"bad parameter!"));
 }
 
+//#region extra functions
+
 //QUERY used to create the table
 /*
 CREATE TABLE "public"."scores" (
@@ -64,6 +66,8 @@ var calculateScore = async function(activity, value) {
         });
     });
 }
+
+//#endregion
 
 //#region CREATE
 

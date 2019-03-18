@@ -114,13 +114,21 @@ module.exports.getObservations = function getObservations (req, res, next) {
   var $sort = req.swagger.params['$sort'].value;
   var timestamp_s_unix_epoch_utc = req.swagger.params['timestamp_s_unix_epoch_utc'].value;
   var score = req.swagger.params['score'].value;
-  ActivityEvents.getObservations(activity,event,$size,$page,subject,id,value,$sort,timestamp_s_unix_epoch_utc,score)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
+
+  if (score != null) {
+    if (score == true) {
+      ActivityEvents.getObservations(activity,event,$size,$page,subject,id,value,$sort,timestamp_s_unix_epoch_utc,score)
+      .then(function (response) {
+        utils.writeJson(res, response);
+      })
+      .catch(function (response) {
+        utils.writeJson(res, response);
+      });
+      return;
+    }
+  }
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.end();
 };
 
 module.exports.getObservationsObservationid = function getObservationsObservationid (req, res, next) {
