@@ -227,13 +227,27 @@ exports.postObservations = function(body) {
  **/
 exports.putObservationsObservationid = function(observationid,body) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "{\"id\":\"sample id\",\"event\":\"sample event\",\"activity\":\"sample activity\",\"subject\":\"sample subject\",\"value\":0.0,\"timestamp_s_unix_epoch_utc\":1510568560}";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    var event = body.event;
+    var activity = body.activity;
+    var subject = body.subject;
+    var value = body.value;
+
+    database.putScore(observationid, event, activity, subject, value)
+    .then(resolve)
+    .catch(function(e){
+      switch(e.statusCode){
+        case database.errors.DATABASE_ERROR:
+        // remove database specific error - will leak information.
+        reject (errApi.create500Error("something terrible happened with the database. Sorry..."));
+        break;
+        case database.errors.INTERNAL_ERROR:
+        reject(errApi.create500Error(e.message));
+        break;
+        case database.errors.PARAMETER_ERROR:
+        reject(errApi.create400Error(e.message));
+        break;
+      }
+    });
   });
 }
 
