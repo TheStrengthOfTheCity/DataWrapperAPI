@@ -15,7 +15,22 @@ var request = require('request');
  **/
 exports.deleteActivitiesActivityid = function(activityid) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    database.deleteScoreByID('activity', activityid)
+    .then(resolve)
+    .catch(function(e){
+      switch(e.statusCode){
+        case database.errors.DATABASE_ERROR:
+        // remove database specific error - will leak information.
+        reject (errApi.create500Error("something terrible happened with the database. Sorry..."));
+        break;
+        case database.errors.INTERNAL_ERROR:
+        reject(errApi.create500Error(e.message));
+        break;
+        case database.errors.PARAMETER_ERROR:
+        reject(errApi.create400Error(e.message));
+        break;
+      }
+    });
   });
 }
 
@@ -27,7 +42,22 @@ exports.deleteActivitiesActivityid = function(activityid) {
  **/
 exports.deleteEventsEventid = function(eventid) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    database.deleteScoreByID('event', eventid)
+    .then(resolve)
+    .catch(function(e){
+      switch(e.statusCode){
+        case database.errors.DATABASE_ERROR:
+        // remove database specific error - will leak information.
+        reject (errApi.create500Error("something terrible happened with the database. Sorry..."));
+        break;
+        case database.errors.INTERNAL_ERROR:
+        reject(errApi.create500Error(e.message));
+        break;
+        case database.errors.PARAMETER_ERROR:
+        reject(errApi.create400Error(e.message));
+        break;
+      }
+    });
   });
 }
 
@@ -40,7 +70,22 @@ exports.deleteEventsEventid = function(eventid) {
  **/
 exports.deleteObservationsObservationid = function(observationid) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    database.deleteScoreByID('id', observationid)
+    .then(resolve)
+    .catch(function(e){
+      switch(e.statusCode){
+        case database.errors.DATABASE_ERROR:
+        // remove database specific error - will leak information.
+        reject (errApi.create500Error("something terrible happened with the database. Sorry..."));
+        break;
+        case database.errors.INTERNAL_ERROR:
+        reject(errApi.create500Error(e.message));
+        break;
+        case database.errors.PARAMETER_ERROR:
+        reject(errApi.create400Error(e.message));
+        break;
+      }
+    });
   });
 }
 
@@ -53,7 +98,22 @@ exports.deleteObservationsObservationid = function(observationid) {
  **/
 exports.deleteSubjectsSubjectid = function(subjectid) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    database.deleteScoreByID('subject', subjectid)
+    .then(resolve)
+    .catch(function(e){
+      switch(e.statusCode){
+        case database.errors.DATABASE_ERROR:
+        // remove database specific error - will leak information.
+        reject (errApi.create500Error("something terrible happened with the database. Sorry..."));
+        break;
+        case database.errors.INTERNAL_ERROR:
+        reject(errApi.create500Error(e.message));
+        break;
+        case database.errors.PARAMETER_ERROR:
+        reject(errApi.create400Error(e.message));
+        break;
+      }
+    });
   });
 }
 

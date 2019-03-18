@@ -9,7 +9,8 @@ module.exports.deleteActivitiesActivityid = function deleteActivitiesActivityid 
   var activityid = req.swagger.params['activityid'].value;
   ActivityEvents.deleteActivitiesActivityid(activityid)
     .then(function (response) {
-      utils.writeJson(res, response);
+      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+      res.end();
     })
     .catch(function (response) {
       utils.writeJson(res, response);
@@ -30,7 +31,8 @@ module.exports.deleteEventsEventid = function deleteEventsEventid (req, res, nex
   var eventid = req.swagger.params['eventid'].value;
   ActivityEvents.deleteEventsEventid(eventid)
     .then(function (response) {
-      utils.writeJson(res, response);
+      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+      res.end();
     })
     .catch(function (response) {
       utils.writeJson(res, response);
@@ -41,7 +43,8 @@ module.exports.deleteObservationsObservationid = function deleteObservationsObse
   var observationid = req.swagger.params['observationid'].value;
   ActivityEvents.deleteObservationsObservationid(observationid)
     .then(function (response) {
-      utils.writeJson(res, response);
+      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+      res.end();
     })
     .catch(function (response) {
       utils.writeJson(res, response);
@@ -52,7 +55,8 @@ module.exports.deleteSubjectsSubjectid = function deleteSubjectsSubjectid (req, 
   var subjectid = req.swagger.params['subjectid'].value;
   ActivityEvents.deleteSubjectsSubjectid(subjectid)
     .then(function (response) {
-      utils.writeJson(res, response);
+      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+      res.end();
     })
     .catch(function (response) {
       utils.writeJson(res, response);
