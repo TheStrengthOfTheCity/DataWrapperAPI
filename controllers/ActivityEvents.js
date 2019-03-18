@@ -9,7 +9,7 @@ module.exports.deleteActivitiesActivityid = function deleteActivitiesActivityid 
   var activityid = req.swagger.params['activityid'].value;
   ActivityEvents.deleteActivitiesActivityid(activityid)
     .then(function (response) {
-      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
       res.end();
     })
     .catch(function (response) {
@@ -18,12 +18,12 @@ module.exports.deleteActivitiesActivityid = function deleteActivitiesActivityid 
 };
 
 module.exports.deleteEventActivityMappingsEventActivityMappingid = function deleteEventActivityMappingsEventActivityMappingid (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
 module.exports.deleteEventSubjectMappingsEventSubjectMappingid = function deleteEventSubjectMappingsEventSubjectMappingid (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
@@ -31,7 +31,7 @@ module.exports.deleteEventsEventid = function deleteEventsEventid (req, res, nex
   var eventid = req.swagger.params['eventid'].value;
   ActivityEvents.deleteEventsEventid(eventid)
     .then(function (response) {
-      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
       res.end();
     })
     .catch(function (response) {
@@ -43,7 +43,7 @@ module.exports.deleteObservationsObservationid = function deleteObservationsObse
   var observationid = req.swagger.params['observationid'].value;
   ActivityEvents.deleteObservationsObservationid(observationid)
     .then(function (response) {
-      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
       res.end();
     })
     .catch(function (response) {
@@ -55,7 +55,7 @@ module.exports.deleteSubjectsSubjectid = function deleteSubjectsSubjectid (req, 
   var subjectid = req.swagger.params['subjectid'].value;
   ActivityEvents.deleteSubjectsSubjectid(subjectid)
     .then(function (response) {
-      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
       res.end();
     })
     .catch(function (response) {
@@ -73,37 +73,37 @@ module.exports.getActivities = function getActivities (req, res, next) {
 };
 
 module.exports.getActivitiesActivityid = function getActivitiesActivityid (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
 module.exports.getEventActivityMappings = function getEventActivityMappings (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
 module.exports.getEventActivityMappingsEventActivityMappingid = function getEventActivityMappingsEventActivityMappingid (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
 module.exports.getEventSubjectMappings = function getEventSubjectMappings (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
 module.exports.getEventSubjectMappingsEventSubjectMappingid = function getEventSubjectMappingsEventSubjectMappingid (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
 module.exports.getEvents = function getEvents (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
 module.exports.getEventsEventid = function getEventsEventid (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
@@ -131,22 +131,22 @@ module.exports.getObservations = function getObservations (req, res, next) {
       return;
     }
   }
-    res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+    res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
     res.end();
 };
 
 module.exports.getObservationsObservationid = function getObservationsObservationid (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
 module.exports.getSubjects = function getSubjects (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
 module.exports.getSubjectsSubjectid = function getSubjectsSubjectid (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
@@ -155,22 +155,22 @@ module.exports.getSubjectsSubjectid = function getSubjectsSubjectid (req, res, n
 //#region POST
 
 module.exports.postActivities = function postActivities (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
 module.exports.postEventActivityMappings = function postEventActivityMappings (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
 module.exports.postEventSubjectMappings = function postEventSubjectMappings (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
 module.exports.postEvents = function postEvents (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
@@ -186,7 +186,7 @@ module.exports.postObservations = function postObservations (req, res, next) {
 };
 
 module.exports.postSubjects = function postSubjects (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
@@ -195,22 +195,22 @@ module.exports.postSubjects = function postSubjects (req, res, next) {
 //#region PUT
 
 module.exports.putActivitiesActivityid = function putActivitiesActivityid (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
 module.exports.putEventActivityMappingsEventActivityMappingid = function putEventActivityMappingsEventActivityMappingid (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
 module.exports.putEventSubjectMappingsEventSubjectMappingid = function putEventSubjectMappingsEventSubjectMappingid (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
 module.exports.putEventsEventid = function putEventsEventid (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
@@ -219,7 +219,7 @@ module.exports.putObservationsObservationid = function putObservationsObservatio
   var body = req.swagger.params['body'].value;
   ActivityEvents.putObservationsObservationid(observationid,body)
     .then(function (response) {
-      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
       res.end();
     })
     .catch(function (response) {
@@ -228,7 +228,7 @@ module.exports.putObservationsObservationid = function putObservationsObservatio
 };
 
 module.exports.putSubjectsSubjectid = function putSubjectsSubjectid (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url});
   res.end();
 };
 
