@@ -170,7 +170,7 @@ module.exports.postEventSubjectMappings = function postEventSubjectMappings (req
 };
 
 module.exports.postEvents = function postEvents (req, res, next) {
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(302, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
   res.end();
 };
 
