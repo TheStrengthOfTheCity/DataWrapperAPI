@@ -15,7 +15,7 @@ tags:
 - name: "ActivityEvents"
   description: "Imported from ActivityEvents"
 schemes:
-- "http"
+- "https"
 paths:
   /activities/:
     get:
