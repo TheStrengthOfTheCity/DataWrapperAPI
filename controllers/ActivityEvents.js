@@ -9,8 +9,7 @@ module.exports.deleteActivitiesActivityid = function deleteActivitiesActivityid 
   var activityid = req.swagger.params['activityid'].value;
   ActivityEvents.deleteActivitiesActivityid(activityid)
     .then(function (response) {
-      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
-      res.end();
+      utils.writeJson(res, response);
     })
     .catch(function (response) {
       utils.writeJson(res, response);
@@ -31,8 +30,7 @@ module.exports.deleteEventsEventid = function deleteEventsEventid (req, res, nex
   var eventid = req.swagger.params['eventid'].value;
   ActivityEvents.deleteEventsEventid(eventid)
     .then(function (response) {
-      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
-      res.end();
+      utils.writeJson(res, response);
     })
     .catch(function (response) {
       utils.writeJson(res, response);
@@ -43,8 +41,7 @@ module.exports.deleteObservationsObservationid = function deleteObservationsObse
   var observationid = req.swagger.params['observationid'].value;
   ActivityEvents.deleteObservationsObservationid(observationid)
     .then(function (response) {
-      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
-      res.end();
+      utils.writeJson(res, response);
     })
     .catch(function (response) {
       utils.writeJson(res, response);
@@ -55,8 +52,7 @@ module.exports.deleteSubjectsSubjectid = function deleteSubjectsSubjectid (req, 
   var subjectid = req.swagger.params['subjectid'].value;
   ActivityEvents.deleteSubjectsSubjectid(subjectid)
     .then(function (response) {
-      res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
-      res.end();
+      utils.writeJson(res, response);
     })
     .catch(function (response) {
       utils.writeJson(res, response);
@@ -131,8 +127,8 @@ module.exports.getObservations = function getObservations (req, res, next) {
       return;
     }
   }
-  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
-  res.end();
+    res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+    res.end();
 };
 
 module.exports.getObservationsObservationid = function getObservationsObservationid (req, res, next) {
@@ -170,7 +166,7 @@ module.exports.postEventSubjectMappings = function postEventSubjectMappings (req
 };
 
 module.exports.postEvents = function postEvents (req, res, next) {
-  res.writeHead(302, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
+  res.writeHead(307, {'Location': 'https://activityevents.restlet.net' + req.url, 'Access-Control-Allow-Origin': '*'});
   res.end();
 };
 
