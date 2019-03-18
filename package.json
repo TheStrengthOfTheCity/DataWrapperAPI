@@ -15,6 +15,7 @@
   "dependencies": {
     "pg": "^7.9.0",
     "request": "^2.88.0",
+    "cors": "^2.8.5",
     "connect": "^3.2.0",
     "js-yaml": "^3.3.0",
     "swagger-tools": "^0.10.4"

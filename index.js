@@ -15,6 +15,8 @@ var dbUrl = process.env.DATABASE_URL;
 // database connection
 database.initialise(dbUrl, true);
 
+var cors = require('cors');
+
 // swaggerRouter configuration
 var options = {
   swaggerUi: path.join(__dirname, '/swagger.json'),
@@ -29,6 +31,8 @@ var swaggerDoc = jsyaml.safeLoad(spec);
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 
+  app.use(cors());
+  
   // Interpret Swagger resources and attach metadata to request - must be first in swagger-tools middleware chain
   app.use(middleware.swaggerMetadata());
 
