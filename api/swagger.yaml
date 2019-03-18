@@ -5,8 +5,8 @@ info:
   version: "1.1.0"
   title: "activityevents"
   contact:
-    name: "strengthofthecity"
-    email: "strengthofthecity18@gmail.com"
+    name: "TheStrengthOfTheCity"
+    email: "strengthofthecity@gmail.com"
 host: "leaderboarddb.herokuapp.com"
 basePath: "/v1"
 tags:
@@ -739,12 +739,12 @@ paths:
         required: false
         type: "string"
         x-example: "sample timestamp_s_unix_epoch_utc"
-      - name: "scores"
+      - name: "score"
         in: "query"
         description: "Allows to get scores instead of observations"
         required: false
         type: "boolean"
-        x-example: "sample scores"
+        x-example: "false"
       responses:
         200:
           description: "Status 200"
