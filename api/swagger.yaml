@@ -6,7 +6,7 @@ info:
   title: "activityevents"
   contact:
     name: "TheStrengthOfTheCity"
-    email: "strengthofthecity@gmail.com"
+    email: "strengthofthecity18@gmail.com"
 host: "leaderboarddb.herokuapp.com"
 basePath: "/v1"
 tags:
@@ -25,6 +25,9 @@ paths:
       operationId: "getActivities"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "units"
         in: "query"
@@ -106,8 +109,14 @@ paths:
       operationId: "postActivities"
       consumes:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - in: "body"
         name: "body"
@@ -130,6 +139,9 @@ paths:
       operationId: "getActivitiesActivityid"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "activityid"
         in: "path"
@@ -154,8 +166,14 @@ paths:
       operationId: "putActivitiesActivityid"
       consumes:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "activityid"
         in: "path"
@@ -202,6 +220,9 @@ paths:
       operationId: "getEventActivityMappings"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "$size"
         in: "query"
@@ -262,8 +283,14 @@ paths:
       operationId: "postEventActivityMappings"
       consumes:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - in: "body"
         name: "body"
@@ -286,6 +313,9 @@ paths:
       operationId: "getEventActivityMappingsEventActivityMappingid"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "eventActivityMappingid"
         in: "path"
@@ -310,8 +340,14 @@ paths:
       operationId: "putEventActivityMappingsEventActivityMappingid"
       consumes:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "eventActivityMappingid"
         in: "path"
@@ -358,6 +394,9 @@ paths:
       operationId: "getEventSubjectMappings"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "$page"
         in: "query"
@@ -418,8 +457,14 @@ paths:
       operationId: "postEventSubjectMappings"
       consumes:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - in: "body"
         name: "body"
@@ -442,6 +487,9 @@ paths:
       operationId: "getEventSubjectMappingsEventSubjectMappingid"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "eventSubjectMappingid"
         in: "path"
@@ -466,8 +514,14 @@ paths:
       operationId: "putEventSubjectMappingsEventSubjectMappingid"
       consumes:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "eventSubjectMappingid"
         in: "path"
@@ -514,6 +568,9 @@ paths:
       operationId: "getEvents"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "$sort"
         in: "query"
@@ -581,8 +638,14 @@ paths:
       operationId: "postEvents"
       consumes:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - in: "body"
         name: "body"
@@ -605,6 +668,9 @@ paths:
       operationId: "getEventsEventid"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "eventid"
         in: "path"
@@ -629,8 +695,14 @@ paths:
       operationId: "putEventsEventid"
       consumes:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "eventid"
         in: "path"
@@ -677,6 +749,9 @@ paths:
       operationId: "getObservations"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "activity"
         in: "query"
@@ -764,8 +839,14 @@ paths:
       operationId: "postObservations"
       consumes:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - in: "body"
         name: "body"
@@ -788,6 +869,9 @@ paths:
       operationId: "getObservationsObservationid"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "observationid"
         in: "path"
@@ -812,8 +896,14 @@ paths:
       operationId: "putObservationsObservationid"
       consumes:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "observationid"
         in: "path"
@@ -860,6 +950,9 @@ paths:
       operationId: "getSubjects"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "$size"
         in: "query"
@@ -913,8 +1006,14 @@ paths:
       operationId: "postSubjects"
       consumes:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - in: "body"
         name: "body"
@@ -937,6 +1036,9 @@ paths:
       operationId: "getSubjectsSubjectid"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "subjectid"
         in: "path"
@@ -961,8 +1063,14 @@ paths:
       operationId: "putSubjectsSubjectid"
       consumes:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       produces:
       - "application/json"
+      - "application/x-yaml"
+      - "application/xml"
+      - "text/xml"
       parameters:
       - name: "subjectid"
         in: "path"
