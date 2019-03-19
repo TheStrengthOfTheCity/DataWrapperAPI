@@ -53,16 +53,49 @@ CREATE TABLE "public"."scores" (
 );
 */
 
-var calculateScore = async function(activity, value) {
+async function calculateScore(activity, value) {
     return new Promise ((resolve, reject) => {
-        request('https://activityevents.restlet.net/v1/activities/' + activity, (error, response, body) => {
-            if (error) {
-                reject(error);
+        request('https://activityevents.restlet.net/v1/activities/' + activity, (err, response, body) => {
+            if (err) {
+                reject(err);
             }
 
             var obj = JSON.parse(body);
             var score = ((value - obj.minLegalValue) * 100.0) / (obj.maxLegalValue - obj.minLegalValue);
             resolve(score);
+        });
+    });
+}
+
+async function getEventNameByID(eventID) {
+    return new Promise((resolve, reject) => {
+        request.get('https://activityevents.restlet.net/v1/events/' + eventID, (err, res, body) => {
+            if (err) { reject(err); }
+
+            var obj = JSON.parse(body);
+            resolve(obj.name);
+        });
+    });
+}
+
+async function getActivityNameByID(activityID) {
+    return new Promise((resolve, reject) => {
+        request.get('https://activityevents.restlet.net/v1/activities/' + activityID, (err, res, body) => {
+            if (err) { reject(err); }
+
+            var obj = JSON.parse(body);
+            resolve(obj.name);
+        });
+    });
+}
+
+async function getSubjectNicknameByID(subjectID) {
+    return new Promise((resolve, reject) => {
+        request.get('https://activityevents.restlet.net/v1/subjects/' + subjectID, (err, res, body) => {
+            if (err) { reject(err); }
+
+            var obj = JSON.parse(body);
+            resolve(obj.nickname);
         });
     });
 }
@@ -95,59 +128,84 @@ exports.postScore = async function(id, event, activity, subject, value) {
 //#region READ
 
 exports.getScores = async function(id, event, activity, subject, score, $page, $size, $sort){
-    var result = null;
+    return new Promise ( async (resolve, reject) => {
+        var result = null;
 
-    var stem = 'select * from scores where';
-    var id_comp = '($1::uuid is null or id = $1) and ';
-    var event_comp = '($2::uuid is null or event = $2) and ';
-    var activity_comp = '($3::uuid is null or activity = $3) and ';
-    var subject_comp = '($4::uuid is null or subject = $4) and ';
-    var score_comp = '($5::numeric(4,2) is null or score = $5);';
+        var stem = 'select * from scores where';
+        var id_comp = '($1::uuid is null or id = $1) and ';
+        var event_comp = '($2::uuid is null or event = $2) and ';
+        var activity_comp = '($3::uuid is null or activity = $3) and ';
+        var subject_comp = '($4::uuid is null or subject = $4) and ';
+        var score_comp = '($5::numeric(4,2) is null or score = $5);';
 
-    var page = 0;
-    var size = 0;
-    var sort = "";
+        var page = 0;
+        var size = 0;
+        var sort = "";
 
-    if ($page) {
+        if ($page) {
+            try {
+                page = parseInt($page);
+            } catch(e){}
+
+        }
+        if ($size) {
+            try {
+                size = parseInt($size);
+            } catch(e){}
+        }
+        if ($sort) {
+            sort = ' order by ' + $sort; // expecting something like "score ASC, date DESC". Will throw on error. 
+        }
+
+        var pagination_comp = "";
+        var offset = page * size;
+        if (offset) {
+            pagination_comp = " OFFSET " + offset + " LIMIT " + size; 
+        }
+
+        var query = 
+            stem + 
+            id_comp +
+            event_comp +
+            activity_comp +
+            subject_comp +
+            score_comp +
+            sort + 
+            pagination_comp + ";"; 
+        
+        var parameters = [id, event, activity, subject, score];
         try {
-            page = parseInt($page);
-        } catch(e){}
+            var response = await thePool.query(query,parameters);
+            result = response.rows;
+        } catch(e) {
+            throw(createError(errors.PARAMETER_ERROR,e.message));
+        }
 
-    }
-    if ($size) {
-        try {
-            size = parseInt($size);
-        } catch(e){}
-    }
-    if ($sort) {
-        sort = ' order by ' + $sort; // expecting something like "score ASC, date DESC". Will throw on error. 
-    }
 
-    var pagination_comp = "";
-    var offset = page * size;
-    if (offset) {
-        pagination_comp = " OFFSET " + offset + " LIMIT " + size; 
-    }
+        var promises = [];
 
-    var query = 
-        stem + 
-        id_comp +
-        event_comp +
-        activity_comp +
-        subject_comp +
-        score_comp +
-        sort + 
-        pagination_comp + ";"; 
-    
-    var parameters = [id, event, activity, subject, score];
-    try {
-        var response = await thePool.query(query,parameters);
-        result = response.rows;
-    } catch(e) {
-        throw(createError(errors.PARAMETER_ERROR,e.message));
-    }
+        for (var i = 0; i < result.length; i++) { 
+            
+            promises.push(getEventNameByID(result[i].event));
+            promises.push(getActivityNameByID(result[i].activity));
+            promises.push(getSubjectNicknameByID(result[i].subject));
 
-    return result;
+        }
+
+        Promise.all(promises)
+        .then((values) => {
+            for (var i = 0; i < result.length; i++) {
+                result[i].event = values[i * 3];
+                result[i].activity = values[i * 3 + 1];
+                result[i].subject = values[i * 3 + 2];
+            }
+
+            resolve(result);
+        })
+        .catch((err) => {
+            reject(err);
+        });
+    });
 }
 
 //#endregion
