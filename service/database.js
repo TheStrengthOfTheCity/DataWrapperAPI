@@ -49,6 +49,7 @@ CREATE TABLE "public"."scores" (
     "activity" UUID NOT NULL,
     "subject" UUID NOT NULL,
     "score" NUMERIC(4,2) NOT NULL,
+    "rank" 
     PRIMARY KEY("id")
 );
 */
@@ -100,20 +101,58 @@ async function getSubjectNicknameByID(subjectID) {
     });
 }
 
+async function findRank(event, activity, score) {
+    return new Promise ( async (resolve, reject) => {
+        var result = null;
+
+        var query = 'SELECT * FROM "scores" WHERE event = $1 and activity = $2;';
+        
+        var parameters = [event,activity];
+        try{
+            // the foreign key set-up in the DB ensures we delete all associated events.
+            var response = await thePool.query(query,parameters);
+            result = response.rows;
+        }catch(e){
+            throw(createError(errors.PARAMETER_ERROR,e.message));
+        }
+
+        var rank = 1;
+
+        for (var i = 0; i < result.length; i++) {
+            if (result[i].score < score) {
+
+                var query = 'UPDATE scores SET "rank" = $2::int WHERE "id" = $1::uuid RETURNING "id", "event", "activity", "subject", "score", "rank";';
+        
+                var parameters = [result[i].id,result[i].rank + 1];
+                try{
+                    // the foreign key set-up in the DB ensures we delete all associated events.
+                    await thePool.query(query,parameters);
+                }catch(e){
+                    throw(createError(errors.PARAMETER_ERROR,e.message));
+                }
+            } else {
+                rank++;
+            }
+        }
+
+        resolve(rank);
+    });
+}
+
 //#endregion
 
 //#region CREATE
 
 exports.postScore = async function(id, event, activity, subject, value) {
     var score = await calculateScore(activity, value);
+    var rank = await findRank(event, activity, score);
 
     var result = null;
 
-    var query = 'INSERT INTO scores("id","event","activity","subject","score") VALUES($1, $2 , $3, $4, $5) RETURNING "id", "event", "activity", "subject", "score";';
+    var query = 'INSERT INTO scores("id","event","activity","subject","score","rank") VALUES($1, $2 , $3, $4, $5, $6) RETURNING "id", "event", "activity", "subject", "score", "rank";';
     
-    var parameters = [id,event,activity,subject,score];
+    var parameters = [id,event,activity,subject,score,rank];
     try{
-        // the foreign key set-up in the DB ensures we delete all associated events.
         var response = await thePool.query(query,parameters);
         result = response.rows[0];
     }catch(e){
@@ -214,11 +253,12 @@ exports.getScores = async function(id, event, activity, subject, score, $page, $
 
 exports.putScore = async function(id, event, activity, subject, value) {
     var score = await calculateScore(activity, value);
+    var rank = await findRank(event, activity, score);
 
     var result = null;
 
-    var query = 'UPDATE scores SET "event"= $2::uuid, "activity"= $3::uuid, "subject"= $4::uuid, "score"= $5::numeric(4,2) WHERE "id"= $1::uuid RETURNING "id", "event", "activity", "subject", "score";';  
-    var parameters = [id,event,activity,subject,score];
+    var query = 'UPDATE scores SET "event"= $2::uuid, "activity"= $3::uuid, "subject"= $4::uuid, "score"= $5::numeric(4,2), "rank"= $6::int WHERE "id"= $1::uuid RETURNING "id", "event", "activity", "subject", "score", "rank";';  
+    var parameters = [id,event,activity,subject,score, rank];
     try{
         // the foreign key set-up in the DB ensures we delete all associated events.
         var response = await thePool.query(query,parameters);
